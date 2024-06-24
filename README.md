@@ -6,7 +6,7 @@ This Python web server utilizes a Large Language Model (LLM) to generate respons
 
 ## Why
 
-Could we use LLMs for web development? Instead of having to develop a site using some frontend library, why can't we have the LLM do it for us? We give it the content of the site, and it will serve it as HTML for us.
+Could we use LLMs for web development? Instead of having to develop a site using some frontend library, why can't we have the LLM do it for us? We give it the content of the site as pure text, and it will serve it as HTML for us.
 
 ## No, really why?
 For fun!
