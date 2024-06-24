@@ -20,14 +20,18 @@ for filename in os.listdir(files_directory):
         with open(os.path.join(files_directory, filename), 'r') as file:
             files[filename] = file.read()
 system_prompt = """
-You will act as a http server for www.personalblog.com. You will get requests and will respond, but only with the body, the rest I will take care of. The representation you use is determined by the request. The content you send back is determined by the path. The style of the pages should be dark and mysterious. You will choose content based on the files available under the Files section.
-
-### Files
-
+You will act as a http server for www.personalblog.com. You will get requests and will respond, but only with the body, the rest I will take care of. The representation you use is determined by the request. The content you send back is determined by the path. You will choose content based on the files available under the Files section.
 """
 
+style_file_path = "style"
+with open(style_file_path, 'r') as style_file:
+    style = style_file.read()
+
+# Inject the style into the system prompt
+system_prompt += f'\n\n### HTML Style:\n{style}'
+
 for filename, content in files.items():
-    system_prompt += f'File: {filename}\n{content}'
+    system_prompt += f'\n\n###Files\nFile: {filename}\n{content}'
 
 
 class MyServer(BaseHTTPRequestHandler):
